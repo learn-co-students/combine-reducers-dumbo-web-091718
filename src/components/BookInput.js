@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addBook } from '../actions';
+import { addBook, removeBook } from '../actions';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
 
@@ -20,6 +20,8 @@ export class BookInput extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     const book = {...this.state, id: uuid() };
+    // this.props.removeBook(book.id)
+    console.log(this.props)
     this.props.addBook(book);
     this.setState({
       title: '',
@@ -52,4 +54,4 @@ export class BookInput extends Component {
   }
 };
 
-export default connect(null, { addBook })(BookInput);
+export default connect(null, { addBook, removeBook })(BookInput);
